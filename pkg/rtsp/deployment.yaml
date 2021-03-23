@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rtsp-mapper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rtspmapper
+  template:
+    metadata:
+      labels:
+        app: rtspmapper
+    spec:
+      hostNetwork: true
+      containers:
+      - name: rtsp-mapper-container
+        image: rtspmapper:v1.0
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: config-volume
+          mountPath: /opt/kubeedge/
+      nodeSelector:
+        rtsp: "true"
+      volumes:
+      - name: config-volume
+        configMap:
+          name: device-profile-config
+      restartPolicy: Always

@@ -1,0 +1,4 @@
+streams:
+  rtsp-device:
+    url: rtsp://admin:insigma2020@192.168.123.250:554/h264/ch1/main/av_stream
+    protocol: tcptocol: tcp

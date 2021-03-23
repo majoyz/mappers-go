@@ -1,0 +1,76 @@
+{
+	"deviceInstances": [{
+		"id": "rtsp-test-instance-01",
+		"name": "rtsp-test-instance-01",
+		"protocol": "rtsp-protocol-01",
+		"model": "rtsp-model",
+		"twins": [{
+			"propertyName": "stream-push-enable",
+			"desired": {
+				"value": "OFF",
+				"metadata": {
+					"timestamp": "1550049403598",
+					"type": "string"
+				}
+			},
+			"reported": {
+				"value": "OFF",
+				"metadata": {
+					"timestamp": "1550049403598",
+					"type": "string"
+				}
+			}
+		}],
+		"propertyVisitors": [{
+			"name": "server-path",
+			"propertyName": "server-path",
+			"modelName": "rtsp-model",
+			"protocol": "rtsp",
+			"visitorConfig": {
+				"path": "rtsp://admin:insigma2020@192.168..123.250:554/h264/ch1/main/av_stream" 
+			}
+		}, {
+			"name": "stream-push-enable",
+			"propertyName": "stream-push-enable",
+			"modelName": "rtsp-model",
+			"protocol": "rtsp",
+			"visitorConfig": {
+				"register": "DiscreteInputRegister",
+				"offset": 3,
+				"limit": 1,
+				"scale": 1,
+				"isSwap": true,
+				"isRegisterSwap": true
+			}
+		}]
+	}],
+	"deviceModels": [{
+		"name": "rtsp-model",
+		"properties": [{
+			"name": "server-path",
+			"dataType": "string",
+			"description": "rtsp proxy server path",
+			"accessMode": "ReadOnly",
+			"defaultValue": "rtsp://localhost:8554/mypath"
+		}, {
+			"name": "stream-push-enable",
+			"dataType": "string",
+			"description": "enable push rtsp of ipcamera",
+			"accessMode": "ReadWrite",
+			"defaultValue": "OFF"
+		}]
+	}],
+	"protocols": [{
+		"name": "rtsp-protocol-01",
+		"protocol": "rtsp",
+		"protocolConfig": {
+			"user": "admin",
+			"password": "insigma2020",
+			"ip": "192.168.123.211",
+            "port": 554,
+			"path": "/h264/ch1/main/av_stream",
+			"fullpath": "rtsp://admin:insigma2020@192.168.123.250:554/h264/ch1/main/av_stream"
+		},
+		"protocolCommonConfig": null
+	}]
+}

@@ -1,0 +1,61 @@
+{
+	"deviceInstances": [{
+		"id": "rtsp-device",
+		"name": "rtsp-device",
+		"protocol": "customized-protocol-rtsp-device",
+		"model": "rtsp-device-model",
+		"dataProperties": [{
+			"propertyName": "server-path",
+			"metadata": {
+				"type": "string"
+			}
+		}, {
+			"propertyName": "stream-push-enable",
+			"metadata": {
+				"type": "string"
+			}
+		}],
+		"dataTopic": "$ke/events/+/device/customized/update",
+		"propertyVisitors": [{
+			"name": "server-path",
+			"propertyName": "server-path",
+			"modelName": "rtsp-device-model"
+		}, {
+			"name": "stream-push-enable",
+			"propertyName": "stream-push-enable",
+			"modelName": "rtsp-device-model"
+		}]
+	}],
+	"deviceModels": [{
+		"name": "rtsp-device-model",
+		"properties": [{
+			"name": "server-path",
+			"dataType": "string",
+			"description": "rtsp_proxy_server_path",
+			"accessMode": "ReadOnly",
+			"defaultValue": "rtsp://localhost:8554/mypath"
+		}, {
+			"name": "stream-push-enable",
+			"dataType": "string",
+			"description": "enable_push_rtsp_of_ipcamera",
+			"accessMode": "ReadWrite",
+			"defaultValue": "OFF"
+		}]
+	}],
+	"protocols": [{
+		"name": "customized-protocol-rtsp-device",
+		"protocol": "customized-protocol",
+		"protocolConfig": {
+			"protocolName": "rtsp",
+			"configData": {
+				"fullpath": "rtsp://admin:insigma2020@192.168.123.250:554/h264/ch1/main/av_stream",
+				"ip": "192.168.123.211",
+				"password": "insigma2020",
+				"path": "/h264/ch1/main/av_stream",
+				"port": 554,
+				"user": "admin"
+			}
+		},
+		"protocolCommonConfig": null
+	}]
+}
